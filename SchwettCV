@@ -1,0 +1,129 @@
+#!/bin/bash
+################################################################################
+#$ This script is designed to reproduce itself in its original formatting      #
+#{ Jamie E H Schwettmann                                                       #
+#^ San Francisco, CA                                                           #
+#^ jamie.schwettmann@gmail.com                                                 # 
+#% 773.413.8250                                                                #
+#$ when run in an 80-char or wider VT-ANSI compatible terminal using bash.     #
+################################################################################
+# First, let’s setup the environment:
+#[ EDUCATION #]-----------------------------------------------------------------
+IN=`basename $0` && NOW=`date +%y%m%d-%H%M%S` && OUT=$IN-$NOW.txt
+#=  University of Oklahoma, Norman, OK
+#+    Bachelor of Science in Physics, May 2010.
+#-      * Thesis in Computational High Energy Physics. D0, 2005 
+#-      * Dept & Ext Research Fellowships in High Performance / High Throughput
+#--         Computing, Heterogeneous Distributed Computing, Grid Computing.
+#-      * Wrote map-reduce interface to LSF to scale compute jobs on the Open  
+#--         Science Grid via Condor-G. US-ATLAS, 2004. 
+#-      * Added 10x scalability to the National Weather Center storm prediction
+#--         software network infrastructure via GridFTP tuning. Globus, 2009.
+usg(){
+#[ PROFESSIONAL EXPERIENCE #]---------------------------------------------------
+printf "Usage: $IN <opts>\n" && head $IN | grep '\$' | cut -d$ -f2 | cut -d# -f1
+#=  I11 Industries LLC, On Tour. 
+#+    Founder, CEO, CTO, Sept 2010 - Sept 2013.
+#-      * Developed cloud-based infrastructure for in-house management of tour 
+#--         planning, project tracking, customer relations, marketing, product 
+#--         development, manufacturing delivery, financial modeling, and sales 
+#--         analysis.
+#-	 * API integration in Bash and Python connecting services from          
+#--         EventBrite, Google Calendar & Maps, GMail, Twilio, Twitter, and    
+#--         more on an AWS-hosted CentOS backend.
+printf "\nOf course there are help, debug, and output options:\n\n"
+#=  HackFriday.com, Amsterdam, NL. 
+#+    Founder, Dev Ops, Prod Ops, System Admin, Nov 2012.	
+#-      * Ran DevOps & ProdOps on AWS to build a responsive node.js-based      
+#--         RSS-reader for Black Friday streams from hackerspaces worldwide. 
+printf "\t-h\t\tThis message.\n\t-d\t\tSet debug flag. Extreme verbosity.\n"	
+#=  Computation Institute, UChicago & Argonne National Laboratory, Chicago, IL.
+#+    Grid Consultant (Grid Systems Prod Ops), Globus Alliance, Jan-Sept 2010
+#-	 * Automated GridFTP throughput analyses using Bash and LSF scripting   
+#--         across the TeraGrid/XSEDE supercomputing centers.
+#-	 * Setup custom throughput monitoring (ISIS), refactored GridFTP        
+#--         configurations, automated checksumming, and acted as Certificate   
+#--         Signing Authority for the Biomedical Informatics Research Network, 
+#--         hosted in a custom Nimbus cloud. 
+#-	 * Developed scalability testing framework in Bash and Python, and      
+#--         implemented service monitoring (Ganglia) for Globus Online GridFTP  
+#--         service in the AWS cloud.
+printf "\t-o <file>\tSet output file.\n\n" && exit 0; }
+#+    Google Summer of Code Student Researcher, Globus Alliance, May-Sept 2009
+#-	 * Developed a GridFTP throughput analysis and optimization utility using 
+#--         Bash and C++.
+# Parse arguments:  
+#=  (Self), Oklahoma City, OK. 
+#+    Consultant, IT Services, Dec 2006 - Nov 2007
+#-	 * Provided outsourced IT services for small to medium-sized businesses
+#--         in central Oklahoma.
+while [ $# -gt 0 ]; do case $1 in -d)DBG=1;shift 1;; -o)OUT=$2;shift 2;; *)usg;;
+#=  University of Oklahoma, Norman, OK. 
+#+    Research Assistant, High Energy Physics, 2003-2006
+#-      * Ported CERNlib CXERF (Complex Error Function) from FORTRAN to C++.
+#-      * Built lightweight multi-host data synchronization and 
+#--         archival/versioning automations based on rsync. 
+#-      * Configured Ganglia and Mona Lisa Grid monitoring systems on 
+#--         Fedora-based beowulf cluster.
+#-      * Developed a MapReduce-like automation interface for the Condor/LSF job 
+#--         managers using Bash-based job submission wrappers.
+esac; done
+[ $DBG ] && printf "(Debug Msgs copied to $OUT)\nIN=$IN, OUT=$OUT\n" | tee $OUT
+#=  San Antonio College, San Antonio, TX. 
+#+    Instructional Assistant, Astronomy Laboratory, Aug 2002 - Dec 2002.
+#-      * Developed & taught computer-based laboratory exercises, supported 
+#--         classroom tech, tutored astronomy.
+
+#=  University of Oklahoma, Norman, OK. 
+#+    Research Assistant, NSF REU Fellowship, High Energy Physics, Jun-Aug 2002
+
+#=  CoffeeCup Software, Corpus Christi, TX. 
+#+    Web/Systems Developer, Help Desk, (Employee #7), Jun 1999 - Jun 2000	
+#-      * Designed an in-software Help system with HTML, CSS, and JavaScript for 
+#--         browsing documentation. 
+#-      * Automated Help Desk workflow by implementing mail filtering, 
+#--         rerouting, and scripted auto-responses.
+#-      * Contributed HTML Editor template code in HTML, CSS, DHTML, JavaScript, 
+#--         and CGI/Perl.
+#-      * Supported development users on JoeExpert.com as “Joe Expert”. 
+
+#[ APPOINTED & ELECTED POSITIONS #]---------------------------------------------
+
+#=  SC Education, 2011 IEEE/ACM SuperComputing Conference
+#+    Program Chair (appt), Student Programming Contest, Jan 2010 - Nov 2011
+#+    Member (appt), Infrastructure Subcommittee, Jan 2010 - Nov 2011
+
+#=  Dean’s Student Advisory Committee, College of Arts & Sciences, U of Oklahoma 
+#+    Representative (appt), Dept of Physics & Astronomy, 2004-2005
+
+#=  Society of Physics Students, University of Oklahoma
+#+    Executive Director (appt), 2006; 
+#+    President (elec), 2004-2005; 
+#+    Webmaster, 2003-2006
+
+#[ PUBLICATIONS & PRESENTATIONS #]---------------------------------------------
+
+#*  J. Schwettmann and E. Michaud, College of Lockpicking: Pick it Like it’s
+#**   1899. 2011, Mindshare LA.
+
+#*  E. Michaud and J. Schwettmann, How to Steal a Nuclear Weapon Without Voiding 
+#**   Your XBox Warranty. 2011, BlackHat DC Security Conference. Cited by Bruce 
+#**   Schneier, ComputerWorld, Wired.
+
+#*  J. Schwettmann and R. Kettimuthu, Characterization of 10Gbps Networks on
+#**   hosts using 10Gbps NICs. 2009, Oklahoma Supercomputing Symposium and 
+#**   IEEE/ACM Supercomputing Conference. Funded by Google.
+
+#*  J. Hegarty and P. Gutierrez, Sensitivity Limits on a Measurement of Dilution 
+#**   in Mixing of the Strange B-Meson. 2005, DØ Collaboration, Fermi National 
+#**   Accelerator Laboratory. Thesis on file at University of Oklahoma Dept of 
+#**   Physics & Astronomy. Funded by the Department of Energy. 
+
+#*  J. Hegarty, P. Skubic, P. Gutierrez, and H. Severini, Preliminary Detector 
+#**   Simulations in the Search for the Higgs Boson. 2002, University of 
+#**   Oklahoma. US-ATLAS Collaboration. Funded by the National Science 
+#**   Foundation.
+
+#[ Software manuals: #] CoffeeCup HTML Editor++, CoffeeCup HTML Editor for Linux, CoffeeCup Image Mapper, CoffeeCup GIF Animator, CoffeeCup CSS Designer, CoffeeCup Java Applet Factories, CoffeeCup DirectFTP, CoffeeCup FreeFTP, CoffeeCup Free HTML.
+
+exit 0
