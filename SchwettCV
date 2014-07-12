@@ -7,9 +7,9 @@
 #% 773.413.8250                                                                #
 #$ when run in an 80-char or wider VT-ANSI compatible terminal using bash.     #
 ################################################################################
-# First, let’s setup the environment:
-#[ EDUCATION #]-----------------------------------------------------------------
 IN=`basename $0` && NOW=`date +%y%m%d-%H%M%S` && OUT=$IN-$NOW.txt
+#[ EDUCATION #]-----------------------------------------------------------------
+usg(){
 #=  University of Oklahoma, Norman, OK
 #+    Bachelor of Science in Physics, May 2010.
 #-      * Thesis in Computational High Energy Physics. D0, 2005 
@@ -19,9 +19,9 @@ IN=`basename $0` && NOW=`date +%y%m%d-%H%M%S` && OUT=$IN-$NOW.txt
 #--         Science Grid via Condor-G. US-ATLAS, 2004. 
 #-      * Added 10x scalability to the National Weather Center storm prediction
 #--         software network infrastructure via GridFTP tuning. Globus, 2009.
-usg(){
-#[ PROFESSIONAL EXPERIENCE #]---------------------------------------------------
 printf "Usage: $IN <opts>\n" && head $IN | grep '\$' | cut -d$ -f2 | cut -d# -f1
+#[ PROFESSIONAL EXPERIENCE #]---------------------------------------------------
+printf "\nOf course there are help, debug, and output options:\n\n"
 #=  I11 Industries LLC, On Tour. 
 #+    Founder, CEO, CTO, Sept 2010 - Sept 2013.
 #-      * Developed cloud-based infrastructure for in-house management of tour 
@@ -31,12 +31,12 @@ printf "Usage: $IN <opts>\n" && head $IN | grep '\$' | cut -d$ -f2 | cut -d# -f1
 #-	 * API integration in Bash and Python connecting services from          
 #--         EventBrite, Google Calendar & Maps, GMail, Twilio, Twitter, and    
 #--         more on an AWS-hosted CentOS backend.
-printf "\nOf course there are help, debug, and output options:\n\n"
+printf "\t-h\t\tThis message.\n\t-d\t\tSet debug flag. Extreme verbosity.\n"	
 #=  HackFriday.com, Amsterdam, NL. 
 #+    Founder, Dev Ops, Prod Ops, System Admin, Nov 2012.	
 #-      * Ran DevOps & ProdOps on AWS to build a responsive node.js-based      
-#--         RSS-reader for Black Friday streams from hackerspaces worldwide. 
-printf "\t-h\t\tThis message.\n\t-d\t\tSet debug flag. Extreme verbosity.\n"	
+#--         RSS-reader for Black Friday streams from hackerspaces worldwide.
+printf "\t-o <file>\tSet output file.\n\n" && exit 0; }
 #=  Computation Institute, UChicago & Argonne National Laboratory, Chicago, IL.
 #+    Grid Consultant (Grid Systems Prod Ops), Globus Alliance, Jan-Sept 2010
 #-	 * Automated GridFTP throughput analyses using Bash and LSF scripting   
@@ -48,16 +48,16 @@ printf "\t-h\t\tThis message.\n\t-d\t\tSet debug flag. Extreme verbosity.\n"
 #-	 * Developed scalability testing framework in Bash and Python, and      
 #--         implemented service monitoring (Ganglia) for Globus Online GridFTP  
 #--         service in the AWS cloud.
-printf "\t-o <file>\tSet output file.\n\n" && exit 0; }
+while [ $# -gt 0 ]; do case $1 in -d)DBG=1;shift 1;; -o)OUT=$2;shift 2;; *)usg;;
 #+    Google Summer of Code Student Researcher, Globus Alliance, May-Sept 2009
 #-	 * Developed a GridFTP throughput analysis and optimization utility using 
 #--         Bash and C++.
-# Parse arguments:  
+esac; done
 #=  (Self), Oklahoma City, OK. 
 #+    Consultant, IT Services, Dec 2006 - Nov 2007
 #-	 * Provided outsourced IT services for small to medium-sized businesses
 #--         in central Oklahoma.
-while [ $# -gt 0 ]; do case $1 in -d)DBG=1;shift 1;; -o)OUT=$2;shift 2;; *)usg;;
+[ $DBG ] && printf "(Debug Msgs copied to $OUT)\nIN=$IN, OUT=$OUT\n" | tee $OUT
 #=  University of Oklahoma, Norman, OK. 
 #+    Research Assistant, High Energy Physics, 2003-2006
 #-      * Ported CERNlib CXERF (Complex Error Function) from FORTRAN to C++.
@@ -67,8 +67,7 @@ while [ $# -gt 0 ]; do case $1 in -d)DBG=1;shift 1;; -o)OUT=$2;shift 2;; *)usg;;
 #--         Fedora-based beowulf cluster.
 #-      * Developed a MapReduce-like automation interface for the Condor/LSF job 
 #--         managers using Bash-based job submission wrappers.
-esac; done
-[ $DBG ] && printf "(Debug Msgs copied to $OUT)\nIN=$IN, OUT=$OUT\n" | tee $OUT
+
 #=  San Antonio College, San Antonio, TX. 
 #+    Instructional Assistant, Astronomy Laboratory, Aug 2002 - Dec 2002.
 #-      * Developed & taught computer-based laboratory exercises, supported 
