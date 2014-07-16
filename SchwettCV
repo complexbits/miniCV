@@ -1,14 +1,14 @@
 #!/bin/bash
-################################################################################
+## #############################################################################
 #$ This script is designed to reproduce itself in its original formatting      #
 #{ Jamie E H Schwettmann                                                       #
 #^ San Francisco, CA                                                           #
 #^ jamie.schwettmann@gmail.com                                                 # 
-#% 773.413.8250                                                                #
+#^ 773.413.8250                                                                #
 #$ when run in an 80-char or wider VT-ANSI compatible terminal using bash.     #
-################################################################################
-IN=`basename $0` && NOW=`date +%y%m%d-%H%M%S` && OUT=$IN-$NOW.txt
-#[ EDUCATION #]-----------------------------------------------------------------
+## #############################################################################
+IN=`basename $0` && OUT=$IN-x.txt
+#[ EDUCATION #]
 usg(){
 #=  University of Oklahoma, Norman, OK
 #+    Bachelor of Science in Physics, May 2010.
@@ -20,7 +20,7 @@ usg(){
 #-      * Added 10x scalability to the National Weather Center storm prediction
 #--         software network infrastructure via GridFTP tuning. Globus, 2009.
 printf "Usage: $IN <opts>\n" && head $IN | grep '\$' | cut -d$ -f2 | cut -d# -f1
-#[ PROFESSIONAL EXPERIENCE #]---------------------------------------------------
+#[ PROFESSIONAL EXPERIENCE #]
 printf "\nOf course there are help, debug, and output options:\n\n"
 #=  I11 Industries LLC, On Tour. 
 #+    Founder, CEO, CTO, Sept 2010 - Sept 2013.
@@ -86,7 +86,7 @@ esac; done
 #--         and CGI/Perl.
 #-      * Supported development users on JoeExpert.com as “Joe Expert”. 
 
-#[ APPOINTED & ELECTED POSITIONS #]---------------------------------------------
+#[ APPOINTED & ELECTED POSITIONS #]
 
 #=  SC Education, 2011 IEEE/ACM SuperComputing Conference
 #+    Program Chair (appt), Student Programming Contest, Jan 2010 - Nov 2011
@@ -100,7 +100,7 @@ esac; done
 #+    President (elec), 2004-2005; 
 #+    Webmaster, 2003-2006
 
-#[ PUBLICATIONS & PRESENTATIONS #]---------------------------------------------
+#[ PUBLICATIONS & PRESENTATIONS #]
 
 #*  J. Schwettmann and E. Michaud, College of Lockpicking: Pick it Like it’s
 #**   1899. 2011, Mindshare LA.
@@ -123,6 +123,16 @@ esac; done
 #**   Oklahoma. US-ATLAS Collaboration. Funded by the National Science 
 #**   Foundation.
 
-#[ Software manuals: #] CoffeeCup HTML Editor++, CoffeeCup HTML Editor for Linux, CoffeeCup Image Mapper, CoffeeCup GIF Animator, CoffeeCup CSS Designer, CoffeeCup Java Applet Factories, CoffeeCup DirectFTP, CoffeeCup FreeFTP, CoffeeCup Free HTML.
-
+# Print the document, according to formatting indicators:
+pf(){ printf "$@"; }
+qn(){ 
+LE='\x1b[0m\n' && CE='\x1b[8m'
+DL=`wc -l $IN | cut -d" " -f1`
+for ((j=1;j<=$DL;j++)); do TL=`head -$j $IN | tail -1` 
+TH=`echo $TL | cut -d" " -f1`
+case $TH in '##')pf "\x1b[33m$TL$LE";; *)pf "$CE$TL$LE";; 
+esac; done
+}
+qn | tee $OUT && chmod +x $OUT
+#pf "wtf"
 exit 0
