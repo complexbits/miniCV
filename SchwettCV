@@ -9,7 +9,7 @@
 ## #############################################################################
 IN=`basename $0` && OUT=$IN-x.txt
 #[ EDUCATION #]
-usg(){
+## usg(){
 #=  University of Oklahoma, Norman, OK
 #+    Bachelor of Science in Physics, May 2010.
 #-      * Thesis in Computational High Energy Physics. D0, 2005 
@@ -19,9 +19,9 @@ usg(){
 #--         Science Grid via Condor-G. US-ATLAS, 2004. 
 #-      * Added 10x scalability to the National Weather Center storm prediction
 #--         software network infrastructure via GridFTP tuning. Globus, 2009.
-printf "Usage: $IN <opts>\n" && head $IN | grep '\$' | cut -d$ -f2 | cut -d# -f1
+## printf "Usage: $IN <opts>\n" && head $IN | grep '\$' | cut -d$ -f2 | cut -d# -f1
 #[ PROFESSIONAL EXPERIENCE #]
-printf "\nOf course there are help, debug, and output options:\n\n"
+## printf "\nOf course there are help, debug, and output options:\n\n"
 #=  I11 Industries LLC, On Tour. 
 #+    Founder, CEO, CTO, Sept 2010 - Sept 2013.
 #-      * Developed cloud-based infrastructure for in-house management of tour 
@@ -31,12 +31,12 @@ printf "\nOf course there are help, debug, and output options:\n\n"
 #-	 * API integration in Bash and Python connecting services from          
 #--         EventBrite, Google Calendar & Maps, GMail, Twilio, Twitter, and    
 #--         more on an AWS-hosted CentOS backend.
-printf "\t-h\t\tThis message.\n\t-d\t\tSet debug flag. Extreme verbosity.\n"	
+## printf "\t-h\t\tThis message.\n\t-d\t\tSet debug flag. Extreme verbosity.\n"	
 #=  HackFriday.com, Amsterdam, NL. 
 #+    Founder, Dev Ops, Prod Ops, System Admin, Nov 2012.	
 #-      * Ran DevOps & ProdOps on AWS to build a responsive node.js-based      
 #--         RSS-reader for Black Friday streams from hackerspaces worldwide.
-printf "\t-o <file>\tSet output file.\n\n" && exit 0; }
+## printf "\t-o <file>\tSet output file.\n\n" && exit 0; }
 #=  Computation Institute, UChicago & Argonne National Laboratory, Chicago, IL.
 #+    Grid Consultant (Grid Systems Prod Ops), Globus Alliance, Jan-Sept 2010
 #-	 * Automated GridFTP throughput analyses using Bash and LSF scripting   
@@ -48,16 +48,16 @@ printf "\t-o <file>\tSet output file.\n\n" && exit 0; }
 #-	 * Developed scalability testing framework in Bash and Python, and      
 #--         implemented service monitoring (Ganglia) for Globus Online GridFTP  
 #--         service in the AWS cloud.
-while [ $# -gt 0 ]; do case $1 in -d)DBG=1;shift 1;; -o)OUT=$2;shift 2;; *)usg;;
+## while [ $# -gt 0 ]; do case $1 in -d)DBG=1;shift 1;; -o)OUT=$2;shift 2;; *)usg;;
 #+    Google Summer of Code Student Researcher, Globus Alliance, May-Sept 2009
 #-	 * Developed a GridFTP throughput analysis and optimization utility using 
 #--         Bash and C++.
-esac; done
+## esac; done
 #=  (Self), Oklahoma City, OK. 
 #+    Consultant, IT Services, Dec 2006 - Nov 2007
 #-	 * Provided outsourced IT services for small to medium-sized businesses
 #--         in central Oklahoma.
-[ $DBG ] && printf "(Debug Msgs copied to $OUT)\nIN=$IN, OUT=$OUT\n" | tee $OUT
+## [ $DBG ] && printf "(Debug Msgs copied to $OUT)\nIN=$IN, OUT=$OUT\n" | tee $OUT
 #=  University of Oklahoma, Norman, OK. 
 #+    Research Assistant, High Energy Physics, 2003-2006
 #-      * Ported CERNlib CXERF (Complex Error Function) from FORTRAN to C++.
@@ -124,15 +124,18 @@ esac; done
 #**   Foundation.
 
 # Print the document, according to formatting indicators:
-pf(){ printf "$@"; }
+pf(){ printf "$A[$@m$TL$A$B\n"; }
 qn(){ 
-LE='\x1b[0m\n' && CE='\x1b[8m'
+A=""; B="[0m"; C="[8m"
+#A="\x1b"; B="[0m"; C="[8m"
 DL=`wc -l $IN | cut -d" " -f1`
 for ((j=1;j<=$DL;j++)); do TL=`head -$j $IN | tail -1` 
 TH=`echo $TL | cut -d" " -f1`
-case $TH in '##')pf "\x1b[33m$TL$LE";; *)pf "$CE$TL$LE";; 
+case $TH in '##')pf 33;; *)pf 8;; 
 esac; done
 }
 qn | tee $OUT && chmod +x $OUT
 #pf "wtf"
 exit 0
+i\n"; done
+   
